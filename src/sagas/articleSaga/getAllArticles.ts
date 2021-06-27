@@ -1,18 +1,14 @@
 import axios from 'axios';
 import { put, call, throttle } from 'redux-saga/effects';
+
 import { getAllArticles } from '@/api';
-import {
-  LOAD_ARTICLES_REQUEST,
-  LoadArticlesRequest,
-  loadArticlesSuccess,
-  loadArticlesFailure,
-} from '@/reducers/article/getAllArticles';
+import { LOAD_ARTICLES_REQUEST, loadArticlesSuccess, loadArticlesFailure } from '@/reducers/article/getAllArticles';
 
 function loadArticlesAPI() {
   return axios.get(getAllArticles);
 }
 
-function* loadArticles(action: LoadArticlesRequest) {
+function* loadArticles(): any {
   try {
     const result = yield call(loadArticlesAPI);
     yield put(loadArticlesSuccess(result.data));

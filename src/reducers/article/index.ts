@@ -7,7 +7,7 @@ import {
   GetAllArticles,
 } from '@/reducers/article/getAllArticles';
 
-const initialState = {
+const initialState: any = {
   allArticles: [],
   loadArticlesLoading: false,
   loadArticlesDone: false,
@@ -16,7 +16,7 @@ const initialState = {
 
 type ReducerAction = GetAllArticles;
 
-const articles = (state: any, action: ReducerAction) => {
+const articles = (state: any = initialState, action: ReducerAction) => {
   return produce(state, (draft: any) => {
     switch (action.type) {
       case LOAD_ARTICLES_REQUEST:

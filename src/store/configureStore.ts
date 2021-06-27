@@ -5,7 +5,6 @@ import createSagaMiddleware from 'redux-saga';
 import reducer from '@/reducers';
 import rootSaga from '@/sagas';
 
-const isDev = process.env.NODE_ENV === 'development';
 const isProd = process.env.NODE_ENV === 'production';
 
 const configureStore = () => {
