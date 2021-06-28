@@ -6,8 +6,16 @@ import {
   LOAD_ARTICLES_FAILURE,
   GetAllArticles,
 } from '@/reducers/article/getAllArticles';
+import { IAllArticlesData } from '@/types/article';
 
-const initialState: any = {
+interface IArticleState {
+  allArticles: IAllArticlesData | null;
+  loadArticlesLoading: boolean;
+  loadArticlesDone: boolean;
+  loadArticlesError: null | string;
+}
+
+const articleState: IArticleState = {
   allArticles: null,
   loadArticlesLoading: false,
   loadArticlesDone: false,
@@ -16,8 +24,8 @@ const initialState: any = {
 
 type ReducerAction = GetAllArticles;
 
-const articles = (state: any = initialState, action: ReducerAction) => {
-  return produce(state, (draft: any) => {
+const articles = (state: IArticleState = articleState, action: ReducerAction) => {
+  return produce(state, (draft) => {
     switch (action.type) {
       case LOAD_ARTICLES_REQUEST:
         draft.loadArticlesLoading = true;
