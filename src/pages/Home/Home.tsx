@@ -8,12 +8,13 @@ interface HomeProps {}
 
 const Home: React.FC<HomeProps> = ({}) => {
   const dispatch = useDispatch();
-  const data = useRootState((state) => state.article);
+  const { allArticles } = useRootState((state) => state.article);
 
   useEffect(() => {
     dispatch(loadArticlesRequest());
   }, []);
 
+  console.log(allArticles);
   return <div>Home</div>;
 };
 
