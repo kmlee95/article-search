@@ -8,7 +8,7 @@ import {
 } from '@/reducers/article/getAllArticles';
 
 const initialState: any = {
-  allArticles: [],
+  allArticles: null,
   loadArticlesLoading: false,
   loadArticlesDone: false,
   loadArticlesError: null,

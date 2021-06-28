@@ -17,8 +17,8 @@ function* loadArticles(): any {
   }
 }
 
-function* watchLoadPosts() {
-  yield throttle(5000, LOAD_ARTICLES_REQUEST, loadArticles);
+function* watchLoadArticles() {
+  yield throttle(1000, LOAD_ARTICLES_REQUEST, loadArticles);
 }
 
-export default watchLoadPosts;
+export default watchLoadArticles;
