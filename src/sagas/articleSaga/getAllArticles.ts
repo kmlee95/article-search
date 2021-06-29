@@ -15,7 +15,7 @@ function loadArticlesAPI() {
 function* loadArticles() {
   try {
     const result: IResponse = yield call(loadArticlesAPI);
-    yield put(loadArticlesSuccess(result.data));
+    yield put(loadArticlesSuccess(result.data.response));
   } catch (err) {
     yield put(loadArticlesFailure(err.response.data));
   }

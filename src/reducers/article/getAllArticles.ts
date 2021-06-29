@@ -1,4 +1,4 @@
-import { IAllArticlesData } from '@/types/article';
+import { IResponseArticle } from '@/types/article';
 
 export const LOAD_ARTICLES_REQUEST = 'LOAD_ARTICLES_REQUEST' as const;
 export const LOAD_ARTICLES_SUCCESS = 'LOAD_ARTICLES_SUCCESS' as const;
@@ -10,7 +10,7 @@ export interface LoadArticlesRequest {
 
 export interface LoadArticlesSuccess {
   type: typeof LOAD_ARTICLES_SUCCESS;
-  data: IAllArticlesData;
+  data: IResponseArticle;
 }
 
 export interface LoadArticlesFailure {
@@ -22,7 +22,7 @@ export const loadArticlesRequest = (): LoadArticlesRequest => ({
   type: LOAD_ARTICLES_REQUEST,
 });
 
-export const loadArticlesSuccess = (data: IAllArticlesData): LoadArticlesSuccess => ({
+export const loadArticlesSuccess = (data: IResponseArticle): LoadArticlesSuccess => ({
   type: LOAD_ARTICLES_SUCCESS,
   data,
 });

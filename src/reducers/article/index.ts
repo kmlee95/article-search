@@ -6,10 +6,10 @@ import {
   LOAD_ARTICLES_FAILURE,
   GetAllArticles,
 } from '@/reducers/article/getAllArticles';
-import { IAllArticlesData } from '@/types/article';
+import { ContentArticleResponse } from '@/types/article';
 
 interface IArticleState {
-  allArticles: IAllArticlesData | null;
+  allArticles: ContentArticleResponse | null;
   loadArticlesLoading: boolean;
   loadArticlesDone: boolean;
   loadArticlesError: null | string;
@@ -35,7 +35,7 @@ const articles = (state: IArticleState = articleState, action: ReducerAction) =>
       case LOAD_ARTICLES_SUCCESS:
         draft.loadArticlesLoading = false;
         draft.loadArticlesDone = true;
-        draft.allArticles = action.data;
+        draft.allArticles = action.data.docs;
         break;
       case LOAD_ARTICLES_FAILURE:
         draft.loadArticlesLoading = false;
