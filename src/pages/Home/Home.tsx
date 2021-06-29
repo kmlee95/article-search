@@ -3,6 +3,8 @@ import { useDispatch } from 'react-redux';
 
 import { useRootState } from '@/hooks/useRootState';
 import { loadArticlesRequest } from '@/reducers/article/getAllArticles';
+import SearchArticle from '@/components/SearchArticle';
+import ArticleList from '@/components/ArticleList';
 
 interface HomeProps {}
 
@@ -15,7 +17,12 @@ const Home: React.FC<HomeProps> = ({}) => {
   }, []);
 
   console.log(allArticles);
-  return <div>Home</div>;
+  return (
+    <>
+      <SearchArticle />
+      <ArticleList article={allArticles} />
+    </>
+  );
 };
 
 export default Home;
