@@ -1,7 +1,17 @@
-interface ArticleCardProps {}
+import { memo } from 'react';
 
-const ArticleCard: React.FC<ArticleCardProps> = ({}) => {
-  return <div>ArticleCard</div>;
+import { ArticleDetail } from '@/types/article';
+
+interface ArticleCardProps {
+  articleData: ArticleDetail;
+}
+
+const ArticleCard: React.FC<ArticleCardProps> = ({ articleData }) => {
+  return (
+    <>
+      <div>{articleData?.abstract}</div>
+    </>
+  );
 };
 
-export default ArticleCard;
+export default memo(ArticleCard);

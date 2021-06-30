@@ -29,12 +29,6 @@ export interface IMeta {
 }
 
 export interface IResponseArticle {
-  docs: IAllArticlesData<ArticleDetail>;
+  docs: ArticleDetail[];
   meta: IMeta;
 }
-
-export interface IAllArticlesData<T> {
-  docs: T[];
-}
-
-export type ContentArticleResponse = IAllArticlesData<ArticleDetail>;

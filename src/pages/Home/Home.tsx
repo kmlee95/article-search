@@ -16,7 +16,6 @@ const Home: React.FC<HomeProps> = ({}) => {
     dispatch(loadArticlesRequest());
   }, []);
 
-  console.log(allArticles);
   return (
     <>
       <SearchArticle />

@@ -6,10 +6,10 @@ import {
   LOAD_ARTICLES_FAILURE,
   GetAllArticles,
 } from '@/reducers/article/getAllArticles';
-import { ContentArticleResponse } from '@/types/article';
+import { ArticleDetail } from '@/types/article';
 
 interface IArticleState {
-  allArticles: ContentArticleResponse | null;
+  allArticles: ArticleDetail[] | null;
   loadArticlesLoading: boolean;
   loadArticlesDone: boolean;
   loadArticlesError: null | string;
