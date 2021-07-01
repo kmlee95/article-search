@@ -2,7 +2,7 @@ export type ArticleDetail = {
   abstract: string;
   byline: object;
   document_type: string;
-  headline: string;
+  headline: IHeadline;
   keywords: object[];
   lead_paragraph: string;
   multimedia: object[];
@@ -21,6 +21,16 @@ export type ArticleDetail = {
   word_count: number;
   _id: string;
 };
+
+export interface IHeadline {
+  content_kicker: string;
+  kicker: string;
+  main: string;
+  name: string;
+  print_headline: string;
+  seo: string;
+  sub: string;
+}
 
 export interface IMeta {
   hits: number;
