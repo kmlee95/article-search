@@ -5,7 +5,7 @@ export type ArticleDetail = {
   headline: IHeadline;
   keywords: object[];
   lead_paragraph: string;
-  multimedia: object[];
+  multimedia: IMultimedia[];
 
   news_desk: string;
   print_page: string;
@@ -21,6 +21,20 @@ export type ArticleDetail = {
   word_count: number;
   _id: string;
 };
+
+export interface IMultimedia {
+  caption: string;
+  credit: string;
+  crop_name: string;
+  height: number;
+  legacy: object;
+  rank: number;
+  subType: string;
+  subtype: string;
+  type: string;
+  url: string;
+  width: number;
+}
 
 export interface IHeadline {
   content_kicker: string;
@@ -41,4 +55,8 @@ export interface IMeta {
 export interface IResponseArticle {
   docs: ArticleDetail[];
   meta: IMeta;
+}
+
+export interface IInputData {
+  searchData: string;
 }
