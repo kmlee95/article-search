@@ -14,29 +14,49 @@ import {
   SearchArticles,
 } from '@/reducers/article/searchArticles';
 
-import { ArticleDetail } from '@/types/article';
+import {
+  LIKE_ARTICLES_REQUEST,
+  LIKE_ARTICLES_SUCCESS,
+  LIKE_ARTICLES_FAILURE,
+  LikeArticles,
+} from '@/reducers/article/likeArticles';
+
+import { ArticleDetail, ILikeArticles } from '@/types/article';
 
 interface IArticleState {
   allArticles: ArticleDetail[] | undefined;
+  likeArticles: string[] | undefined;
+
   loadArticlesLoading: boolean;
   loadArticlesDone: boolean;
   loadArticlesError: null | string;
+
   loadSearchLoading: boolean;
   loadSearchDone: boolean;
   loadSearchError: null | string;
+
+  likeArticlesLoading: boolean;
+  likeArticlesDone: boolean;
+  likeArticlesError: null | string;
 }
 
 const articleState: IArticleState = {
   allArticles: [],
+  likeArticles: [],
   loadArticlesLoading: false,
   loadArticlesDone: false,
   loadArticlesError: null,
+
   loadSearchLoading: false,
   loadSearchDone: false,
   loadSearchError: null,
+
+  likeArticlesLoading: false,
+  likeArticlesDone: false,
+  likeArticlesError: null,
 };
 
-type ReducerAction = GetAllArticles | SearchArticles;
+type ReducerAction = GetAllArticles | SearchArticles | LikeArticles;
 
 const articles = (state: IArticleState = articleState, action: ReducerAction) => {
   return produce(state, (draft) => {
@@ -69,6 +89,21 @@ const articles = (state: IArticleState = articleState, action: ReducerAction) =>
       case LOAD_SEARCH_FAILURE:
         draft.loadArticlesLoading = false;
         draft.loadArticlesError = action.error;
+        break;
+
+      case LIKE_ARTICLES_REQUEST:
+        draft.likeArticlesLoading = true;
+        draft.likeArticlesDone = false;
+        draft.likeArticles = draft.likeArticles.concat(action.articleId);
+        break;
+      case LIKE_ARTICLES_SUCCESS:
+        draft.likeArticlesLoading = false;
+        draft.likeArticlesDone = true;
+        draft.likeArticlesError = null;
+        break;
+      case LIKE_ARTICLES_FAILURE:
+        draft.likeArticlesLoading = false;
+        draft.likeArticlesError = action.error;
         break;
     }
   });

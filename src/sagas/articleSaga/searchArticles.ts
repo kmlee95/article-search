@@ -13,7 +13,7 @@ import {
 const call: any = Effects.call;
 
 function loadSearchAPI(searchData: string) {
-  return axios.get(getAllArticles, { params: { q: searchData } });
+  return axios.get(getAllArticles, { params: { fq: searchData } });
 }
 
 function* loadSearch(action: LoadSearchRequest) {
