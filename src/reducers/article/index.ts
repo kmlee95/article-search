@@ -21,7 +21,14 @@ import {
   LikeArticles,
 } from '@/reducers/article/likeArticles';
 
-import { ArticleDetail, ILikeArticles } from '@/types/article';
+import {
+  UNLIKE_ARTICLES_REQUEST,
+  UNLIKE_ARTICLES_SUCCESS,
+  UNLIKE_ARTICLES_FAILURE,
+  UnLikeArticles,
+} from '@/reducers/article/unlikeArticles';
+
+import { ArticleDetail } from '@/types/article';
 
 interface IArticleState {
   allArticles: ArticleDetail[] | undefined;
@@ -38,6 +45,10 @@ interface IArticleState {
   likeArticlesLoading: boolean;
   likeArticlesDone: boolean;
   likeArticlesError: null | string;
+
+  unlikeArticlesloading: boolean;
+  unlikeArticlesDone: boolean;
+  unlikeArticlesError: null | string;
 }
 
 const articleState: IArticleState = {
@@ -54,9 +65,13 @@ const articleState: IArticleState = {
   likeArticlesLoading: false,
   likeArticlesDone: false,
   likeArticlesError: null,
+
+  unlikeArticlesloading: false,
+  unlikeArticlesDone: false,
+  unlikeArticlesError: null,
 };
 
-type ReducerAction = GetAllArticles | SearchArticles | LikeArticles;
+type ReducerAction = GetAllArticles | SearchArticles | LikeArticles | UnLikeArticles;
 
 const articles = (state: IArticleState = articleState, action: ReducerAction) => {
   return produce(state, (draft) => {
@@ -102,6 +117,21 @@ const articles = (state: IArticleState = articleState, action: ReducerAction) =>
         draft.likeArticlesError = null;
         break;
       case LIKE_ARTICLES_FAILURE:
+        draft.likeArticlesLoading = false;
+        draft.likeArticlesError = action.error;
+        break;
+
+      case UNLIKE_ARTICLES_REQUEST:
+        draft.likeArticlesLoading = true;
+        draft.likeArticlesDone = false;
+        draft.likeArticles = draft.likeArticles.filter((likeArticle) => likeArticle !== action.articleId);
+        break;
+      case UNLIKE_ARTICLES_SUCCESS:
+        draft.likeArticlesLoading = false;
+        draft.likeArticlesDone = true;
+        draft.likeArticlesError = null;
+        break;
+      case UNLIKE_ARTICLES_FAILURE:
         draft.likeArticlesLoading = false;
         draft.likeArticlesError = action.error;
         break;

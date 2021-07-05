@@ -8,6 +8,7 @@ import { likeArticlesRequest } from '@/reducers/article/likeArticles';
 import { StyledArticleCard } from './styled';
 import { useEffect } from 'react';
 import { useRootState } from '@/hooks/useRootState';
+import { unlikeArticlesRequest } from '@/reducers/article/unlikeArticles';
 
 interface ArticleCardProps {
   articleData: ArticleDetail;
@@ -22,13 +23,16 @@ const ArticleCard: React.FC<ArticleCardProps> = ({ articleData }) => {
   useEffect(() => {
     if (likeArticles.indexOf(articleData._id) >= 0) {
       setLike(true);
+    } else {
+      setLike(false);
     }
   }, [likeArticles]);
 
   const onClickLikeArticle = useCallback(() => {
-    console.log(like);
     if (!like) {
       dispatch(likeArticlesRequest(articleData._id));
+    } else {
+      dispatch(unlikeArticlesRequest(articleData._id));
     }
   }, [like]);
 
