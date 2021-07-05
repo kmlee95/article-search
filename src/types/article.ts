@@ -57,6 +57,12 @@ export interface IResponseArticle {
   meta: IMeta;
 }
 
+/* search */
 export interface IInputData {
   searchData: string;
+}
+
+/* like */
+export interface ILikeArticles {
+  _id: string;
 }
