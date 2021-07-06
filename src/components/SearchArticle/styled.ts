@@ -2,9 +2,8 @@ import styled from '@emotion/styled';
 import { Input } from 'antd';
 
 export const StyledArticleTitle = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  position: static;
+  text-align: center;
   width: 100%;
 `;
 
@@ -19,6 +18,8 @@ export const StyledSearchInput = styled(Input.Search)`
 `;
 
 export const StyledArticleInput = styled.div`
-  display: flex;
-  justify-content: right;
+  position: relative;
+  text-align: right;
+  padding-right: 20px;
+  width: 100%;
 `;

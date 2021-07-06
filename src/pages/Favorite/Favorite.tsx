@@ -20,7 +20,7 @@ const Favorite: React.FC<FavoriteProps> = ({}) => {
   );
 
   useEffect(() => {
-    dispatch(loadArticlesRequest()); //바로 url 접근했을때를 고려
+    dispatch(loadArticlesRequest(0)); //바로 url 접근했을때를 고려(지우기 .. 초기 로딩없이 모든 데이터를 likeArticles에 저장)
   }, []);
 
   return (

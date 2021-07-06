@@ -1,20 +1,24 @@
 import axios from 'axios';
-import { put, call, takeLatest } from 'redux-saga/effects';
+import { put, takeLatest } from 'redux-saga/effects';
+import * as Effects from 'redux-saga/effects';
 
 import { getAllArticles } from '@/api';
-import { LOAD_ARTICLES_REQUEST, loadArticlesSuccess, loadArticlesFailure } from '@/reducers/article/getAllArticles';
+import {
+  LOAD_ARTICLES_REQUEST,
+  loadArticlesSuccess,
+  loadArticlesFailure,
+  LoadArticlesRequest,
+} from '@/reducers/article/getAllArticles';
 
-interface IResponse {
-  data?: any;
+const call: any = Effects.call;
+
+function loadArticlesAPI(pages: number) {
+  return axios.get(getAllArticles, { params: { page: pages } });
 }
 
-function loadArticlesAPI() {
-  return axios.get(getAllArticles);
-}
-
-function* loadArticles() {
+function* loadArticles(action: LoadArticlesRequest) {
   try {
-    const result: IResponse = yield call(loadArticlesAPI);
+    const result = yield call(loadArticlesAPI, action.page);
     yield put(loadArticlesSuccess(result.data.response));
   } catch (err) {
     yield put(loadArticlesFailure(err.response.data));
