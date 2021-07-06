@@ -4,9 +4,11 @@ import { useDispatch } from 'react-redux';
 import { StyledArticleTitle, StyledSearchHeader, StyledSearchInput, StyledArticleInput } from './styled';
 import { loadSearchRequest } from '@/reducers/article/searchArticles';
 
-interface SearchArticleProps {}
+interface SearchArticleProps {
+  title: string;
+}
 
-const SearchArticle: React.FC<SearchArticleProps> = ({}) => {
+const SearchArticle: React.FC<SearchArticleProps> = ({ title }) => {
   const dispatch = useDispatch();
   const onSearch = useCallback(
     (e) => {
@@ -18,7 +20,7 @@ const SearchArticle: React.FC<SearchArticleProps> = ({}) => {
   return (
     <>
       <StyledArticleTitle>
-        <StyledSearchHeader>전체 기사목록 조회</StyledSearchHeader>
+        <StyledSearchHeader>{title}</StyledSearchHeader>
       </StyledArticleTitle>
 
       <StyledArticleInput>

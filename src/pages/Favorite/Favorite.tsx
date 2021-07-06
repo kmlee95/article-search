@@ -25,7 +25,7 @@ const Favorite: React.FC<FavoriteProps> = ({}) => {
 
   return (
     <StyledSectionFavorite>
-      <SearchArticle />
+      <SearchArticle title="즐겨찾기 목록 조회" />
       {!loadArticlesLoading ? <ArticleList article={likeArticlesFilter} /> : <Loading />}
     </StyledSectionFavorite>
   );
