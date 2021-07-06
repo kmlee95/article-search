@@ -1,4 +1,4 @@
-import { IResponseArticle } from '@/types/article';
+import { IPage, IResponseArticle } from '@/types/article';
 
 export const LOAD_ARTICLES_REQUEST = 'LOAD_ARTICLES_REQUEST' as const;
 export const LOAD_ARTICLES_SUCCESS = 'LOAD_ARTICLES_SUCCESS' as const;
@@ -6,6 +6,7 @@ export const LOAD_ARTICLES_FAILURE = 'LOAD_ARTICLES_FAILURE' as const;
 
 export interface LoadArticlesRequest {
   type: typeof LOAD_ARTICLES_REQUEST;
+  page: number;
 }
 
 export interface LoadArticlesSuccess {
@@ -18,8 +19,9 @@ export interface LoadArticlesFailure {
   error: string;
 }
 
-export const loadArticlesRequest = (): LoadArticlesRequest => ({
+export const loadArticlesRequest = (page: number): LoadArticlesRequest => ({
   type: LOAD_ARTICLES_REQUEST,
+  page,
 });
 
 export const loadArticlesSuccess = (data: IResponseArticle): LoadArticlesSuccess => ({

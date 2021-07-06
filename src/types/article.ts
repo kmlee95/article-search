@@ -66,3 +66,8 @@ export interface IInputData {
 export interface ILikeArticles {
   _id: string;
 }
+
+/* page */
+export interface IPage {
+  page: number;
+}
