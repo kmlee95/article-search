@@ -20,7 +20,7 @@ const Home: React.FC<HomeProps> = ({}) => {
 
   return (
     <StyledSectionHome>
-      <SearchArticle />
+      <SearchArticle title="전체 기사목록 조회" />
       {!loadArticlesLoading && !loadSearchLoading ? <ArticleList article={allArticles} /> : <Loading />}
     </StyledSectionHome>
   );
