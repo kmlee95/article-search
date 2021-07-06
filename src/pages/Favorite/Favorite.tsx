@@ -16,7 +16,7 @@ const Favorite: React.FC<FavoriteProps> = ({}) => {
 
   const likeArticlesFilter = useMemo(
     () => allArticles.filter((article) => likeArticles.includes(article._id)),
-    [allArticles],
+    [allArticles, likeArticles],
   );
 
   useEffect(() => {
