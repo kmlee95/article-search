@@ -32,7 +32,7 @@ import { ArticleDetail } from '@/types/article';
 
 interface IArticleState {
   allArticles: ArticleDetail[] | undefined;
-  likeArticles: string[] | undefined;
+  likeArticles: ArticleDetail[] | undefined;
 
   loadArticlesLoading: boolean;
   loadArticlesDone: boolean;
@@ -110,7 +110,9 @@ const articles = (state: IArticleState = articleState, action: ReducerAction) =>
       case LIKE_ARTICLES_REQUEST:
         draft.likeArticlesLoading = true;
         draft.likeArticlesDone = false;
-        draft.likeArticles = draft.likeArticles.concat(action.articleId);
+        const filterArticle = state.allArticles.filter((s) => s._id === action.articleId);
+
+        draft.likeArticles = draft.likeArticles.concat(filterArticle);
         break;
       case LIKE_ARTICLES_SUCCESS:
         draft.likeArticlesLoading = false;
@@ -125,7 +127,7 @@ const articles = (state: IArticleState = articleState, action: ReducerAction) =>
       case UNLIKE_ARTICLES_REQUEST:
         draft.likeArticlesLoading = true;
         draft.likeArticlesDone = false;
-        draft.likeArticles = draft.likeArticles.filter((likeArticle) => likeArticle !== action.articleId);
+        draft.likeArticles = draft.likeArticles.filter((s) => s._id !== action.articleId);
         break;
       case UNLIKE_ARTICLES_SUCCESS:
         draft.likeArticlesLoading = false;

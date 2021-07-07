@@ -21,7 +21,7 @@ const ArticleCard: React.FC<ArticleCardProps> = ({ articleData }) => {
   const [like, setLike] = useState(false); //like check
 
   useEffect(() => {
-    if (likeArticles.indexOf(articleData._id) >= 0) {
+    if (likeArticles.map((s) => s._id).indexOf(articleData._id) >= 0) {
       setLike(true);
     } else {
       setLike(false);
@@ -34,7 +34,7 @@ const ArticleCard: React.FC<ArticleCardProps> = ({ articleData }) => {
     } else {
       dispatch(unlikeArticlesRequest(articleData._id));
     }
-  }, [like]);
+  }, [like, articleData._id]);
 
   return (
     <>
