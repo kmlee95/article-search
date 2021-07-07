@@ -127,7 +127,11 @@ const articles = (state: IArticleState = articleState, action: ReducerAction) =>
       case UNLIKE_ARTICLES_REQUEST:
         draft.likeArticlesLoading = true;
         draft.likeArticlesDone = false;
-        draft.likeArticles = draft.likeArticles.filter((s) => s._id !== action.articleId);
+
+        const index = draft.likeArticles.findIndex((v) => v._id === action.articleId);
+        draft.likeArticles.splice(index, 1);
+
+        //draft.likeArticles = draft.likeArticles.filter((s) => s._id !== action.articleId);
         break;
       case UNLIKE_ARTICLES_SUCCESS:
         draft.likeArticlesLoading = false;
