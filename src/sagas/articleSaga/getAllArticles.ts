@@ -1,6 +1,5 @@
 import axios from 'axios';
-import { put, takeLatest } from 'redux-saga/effects';
-import * as Effects from 'redux-saga/effects';
+import { call, put, takeLatest } from 'redux-saga/effects';
 
 import { getAllArticles } from '@/api';
 import {
@@ -9,8 +8,6 @@ import {
   loadArticlesFailure,
   LoadArticlesRequest,
 } from '@/reducers/article/getAllArticles';
-
-const call: any = Effects.call;
 
 function loadArticlesAPI(pages: number) {
   return axios.get(getAllArticles, { params: { page: pages } });

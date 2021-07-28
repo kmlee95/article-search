@@ -23,6 +23,9 @@ const Header: React.FC<HeaderProps> = ({}) => {
       <Menu.Item key="favorites" icon={<AppstoreOutlined />}>
         <Link to="/Favorite">즐겨찾기 목록</Link>
       </Menu.Item>
+      <Menu.Item key="scrollEvent">
+        <Link to="/ScrollEvent">무한스크롤(Scroll Event)</Link>
+      </Menu.Item>
     </Menu>
   );
 };
