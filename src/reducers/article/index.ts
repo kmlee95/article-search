@@ -84,7 +84,6 @@ const articles = (state: IArticleState = articleState, action: ReducerAction) =>
       case LOAD_ARTICLES_SUCCESS:
         draft.loadArticlesLoading = false;
         draft.loadArticlesDone = true;
-        draft.allArticles = [];
         draft.allArticles = draft.allArticles.concat(action.data.docs);
         break;
       case LOAD_ARTICLES_FAILURE:

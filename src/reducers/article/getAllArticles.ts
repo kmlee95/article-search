@@ -1,4 +1,4 @@
-import { IPage, IResponseArticle } from '@/types/article';
+import { IResponseArticle } from '@/types/article';
 
 export const LOAD_ARTICLES_REQUEST = 'LOAD_ARTICLES_REQUEST' as const;
 export const LOAD_ARTICLES_SUCCESS = 'LOAD_ARTICLES_SUCCESS' as const;
