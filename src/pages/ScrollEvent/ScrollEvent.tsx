@@ -16,7 +16,7 @@ const ScrollEvent: React.FC<ScrollEventProps> = ({}) => {
 
   const fetchArticle = () => {
     setPageCount((prev) => prev + 10);
-    //setIsFetching(false);
+    setIsFetching(false);
   };
 
   const [pageCount, setPageCount] = useState(0);

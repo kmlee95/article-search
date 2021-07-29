@@ -5,9 +5,9 @@ import throttleRender from '@/utils/throttleRender';
 const THROTTLE_WAIT = 300;
 
 export function useInfiniteScroll(fetchData) {
-  const [isFetching, setIsFetching] = useState<boolean>(false);
+  const [isFetching, setIsFetching] = useState(false);
 
-  const handleScroll = throttleRender(() => {
+  const handleScroll = throttle(() => {
     //innerHeight : 지금 화면으로 보이는 윈도우 높이
     //scrollTop : 현재 화면의 어느 좌표를 보고있는지 알려주는 top 좌표
     //offSetHeight : 스크롤을 포함한 전체페이지 길이
@@ -17,7 +17,7 @@ export function useInfiniteScroll(fetchData) {
       );
       setIsFetching(true);
     }
-  });
+  }, THROTTLE_WAIT);
 
   useEffect(() => {
     window.addEventListener('scroll', handleScroll);
@@ -32,5 +32,5 @@ export function useInfiniteScroll(fetchData) {
     fetchData();
   }, [isFetching]);
 
-  return [isFetching, setIsFetching];
+  return [isFetching, setIsFetching] as const;
 }
