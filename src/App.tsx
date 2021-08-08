@@ -5,6 +5,7 @@ import Header from '@/components/Header';
 import Home from '@/pages/Home';
 import Favorite from '@/pages/Favorite';
 import ScrollEvent from '@/pages/ScrollEvent';
+import ObserverScroll from '@/pages/ObserverScroll';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route path="/" exact component={Home} />
         <Route path="/Favorite" exact component={Favorite} />
         <Route path="/ScrollEvent" exact component={ScrollEvent} />
+        <Route path="/ObserverScroll" exact component={ObserverScroll} />
       </Switch>
     </Router>
   );

@@ -11,12 +11,13 @@ import { useInfiniteScroll } from '@/hooks/useInfiniteScroll';
 
 interface ScrollEventProps {}
 
+//ScrollEvent
 const ScrollEvent: React.FC<ScrollEventProps> = ({}) => {
   const dispatch = useDispatch();
 
   const fetchArticle = () => {
     setPageCount((prev) => prev + 10);
-    //setIsFetching(false);
+    setIsFetching(false);
   };
 
   const [pageCount, setPageCount] = useState(0);
