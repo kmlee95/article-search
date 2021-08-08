@@ -1,11 +1,11 @@
 # 📍 Article
 
-### Article API를 통한 react practice
+### Article API react practice
 
 
 <br/>
 
-# 기술 스택
+# Tech
 
 <h3>  
   FrontEnd
