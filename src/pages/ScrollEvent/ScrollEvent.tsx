@@ -11,6 +11,7 @@ import { useInfiniteScroll } from '@/hooks/useInfiniteScroll';
 
 interface ScrollEventProps {}
 
+//ScrollEvent
 const ScrollEvent: React.FC<ScrollEventProps> = ({}) => {
   const dispatch = useDispatch();
 
